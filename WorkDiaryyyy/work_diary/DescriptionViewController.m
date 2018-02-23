@@ -7,7 +7,7 @@
 //
 
 #import "DescriptionViewController.h"
-
+#import "HistoryViewController.h"
 @interface DescriptionViewController ()
 
 @end
@@ -15,12 +15,16 @@
 @implementation DescriptionViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-   
     
-
-[super viewDidLoad];
+    NSMutableString *seged = [defaults objectForKey:@"taskname"];
+    
+   // _estimatedHours.text = @"estimated time: %@",_seged;
+    
+    NSLog(@"%@",seged);
+    
+    
 }
 
 

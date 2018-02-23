@@ -12,4 +12,7 @@
     
 }
 @property (weak, nonatomic) IBOutlet UIButton *DeleteButton;
+@property (copy, nonatomic) NSArray *tasks;
+@property (copy, nonatomic) NSArray *estimatedhour;
+@property (strong, nonatomic) NSArray *seged;
 @end

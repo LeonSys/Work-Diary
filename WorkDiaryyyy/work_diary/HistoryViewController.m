@@ -7,14 +7,14 @@
 //
 
 #import "HistoryViewController.h"
+#import "DescriptionViewController.h"
 
 @interface HistoryViewController () {
     NSMutableArray *tasksToDelete;
     NSMutableArray *tasksData;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
-@property (copy, nonatomic) NSArray *tasks;
-@property (copy, nonatomic) NSArray *estimatedhour;
+
 
 @end
 
@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -71,18 +73,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tasksToDelete addObject: tasksData[indexPath.row]];
-    [tasksToDelete removeObject:tasksData[indexPath.row]];
     
-    NSString *rowValueOne = self.tasks[indexPath.row];
-    NSString *rowValueTwo = self.estimatedhour[indexPath.row];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *messageOne = [[NSString alloc]initWithFormat:@"%@",rowValueOne];
-    NSString *messageTwo = [[NSString alloc]initWithFormat:@"Estimatedhours: %@",rowValueTwo];
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
-    [self performSegueWithIdentifier:@"Description" sender:self];
     
+    
+    DescriptionViewController *descriptionController = [[DescriptionViewController alloc] init];
+    descriptionController.cellTitle = selectedCell.textLabel.text;
+   [defaults setObject:descriptionController.cellTitle forKey:@"cellTitle"];
+  
+    
+   
+            [self performSegueWithIdentifier:@"Description" sender:self];
     }
+
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
    
@@ -94,37 +100,19 @@
     return 40;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //remove the deleted object from your data source.
-        //If your data source is an NSMutableArray, do this
-        [self->tasksData removeObjectAtIndex:indexPath.row];
-        [tableView reloadData]; // tell table to refresh now
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
     }
 }
 
-- (IBAction)DeleteButton:(UIButton *)sender {
+
+- (IBAction)buttonDelete:(id)sender {
    
-   
-    [_table setEditing:YES animated:YES];
     
-    /*sender.selected = !sender.selected;
-    [self.table setEditing:sender.selected animated:YES];
-    
-    if (tasksToDelete.count){
-        for(NSMutableArray *str in tasksToDelete ) {
-            [tasksData removeObject:str];
-        }
-        [tasksToDelete removeAllObjects];
-        [self.table reloadData];
-    }*/
     
 }
-
-
 
 @end

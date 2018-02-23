@@ -10,5 +10,8 @@
 
 @interface DescriptionViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) NSString *cellTitle;
+@property (weak, nonatomic) IBOutlet UILabel *estimatedHours;
+
 @end
