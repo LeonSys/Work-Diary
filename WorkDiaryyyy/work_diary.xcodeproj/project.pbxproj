@@ -22,6 +22,7 @@
 		0632A3F2201A221A0068218B /* LogWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632A3F1201A221A0068218B /* LogWorkViewController.m */; };
 		0632A439201B4D5D0068218B /* Assets 12-43-56-910.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0632A438201B4D5D0068218B /* Assets 12-43-56-910.xcassets */; };
 		0632A43C2020754E0068218B /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632A43B2020754E0068218B /* HistoryViewController.m */; };
+		2E3F6B15203F174F00AD348F /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3F6B14203F174F00AD348F /* DescriptionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		0632A438201B4D5D0068218B /* Assets 12-43-56-910.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 12-43-56-910.xcassets"; sourceTree = "<group>"; };
 		0632A43A2020754E0068218B /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		0632A43B2020754E0068218B /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		2E3F6B13203F174F00AD348F /* DescriptionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionViewController.h; sourceTree = "<group>"; };
+		2E3F6B14203F174F00AD348F /* DescriptionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DescriptionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				0632A3B52019E6050068218B /* ViewController.m */,
 				0632A3E42019FE2E0068218B /* ActivationViewController.h */,
 				0632A3E52019FE2E0068218B /* ActivationViewController.m */,
+				2E3F6B13203F174F00AD348F /* DescriptionViewController.h */,
+				2E3F6B14203F174F00AD348F /* DescriptionViewController.m */,
 				0632A3E72019FE4A0068218B /* LoginViewController.h */,
 				0632A3E82019FE4A0068218B /* LoginViewController.m */,
 				0632A3EA2019FE660068218B /* HomeViewController.h */,
@@ -315,6 +320,7 @@
 				0632A3E92019FE4A0068218B /* LoginViewController.m in Sources */,
 				0632A43C2020754E0068218B /* HistoryViewController.m in Sources */,
 				0632A3F2201A221A0068218B /* LogWorkViewController.m in Sources */,
+				2E3F6B15203F174F00AD348F /* DescriptionViewController.m in Sources */,
 				0632A3B32019E6050068218B /* AppDelegate.m in Sources */,
 				0632A3BC2019E6050068218B /* work_diary.xcdatamodeld in Sources */,
 				0632A3EC2019FE660068218B /* HomeViewController.m in Sources */,

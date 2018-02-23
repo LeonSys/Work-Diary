@@ -34,7 +34,7 @@
       self.pickerView.dataSource = self;
       self.pickerView.delegate = self;
     
-    //Set Color of Date Picker
+  
     self.datepickerView.datePickerMode = UIDatePickerModeDate;
     [self.datepickerView setValue:[UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0f] forKeyPath:@"textColor"];
     SEL selector = NSSelectorFromString(@"setHighlightsToday:");

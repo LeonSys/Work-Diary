@@ -80,10 +80,7 @@
     NSString *messageOne = [[NSString alloc]initWithFormat:@"%@",rowValueOne];
     NSString *messageTwo = [[NSString alloc]initWithFormat:@"Estimatedhours: %@",rowValueTwo];
     
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:messageOne message:messageTwo delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    
-    [alert show];
+    [self performSegueWithIdentifier:@"Description" sender:self];
     
     }
 
@@ -97,16 +94,34 @@
     return 40;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+        [self->tasksData removeObjectAtIndex:indexPath.row];
+        [tableView reloadData]; // tell table to refresh now
+    }
+}
+
 - (IBAction)DeleteButton:(UIButton *)sender {
-    sender.selected = !sender.selected;
+   
+   
+    [_table setEditing:YES animated:YES];
+    
+    /*sender.selected = !sender.selected;
     [self.table setEditing:sender.selected animated:YES];
+    
     if (tasksToDelete.count){
-        for(NSString *str in tasksToDelete ) {
+        for(NSMutableArray *str in tasksToDelete ) {
             [tasksData removeObject:str];
         }
         [tasksToDelete removeAllObjects];
         [self.table reloadData];
-    }
+    }*/
     
 }
 

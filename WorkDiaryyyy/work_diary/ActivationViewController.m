@@ -52,7 +52,7 @@
         [ _emailField.text isEqualToString:@""]    ||
         [ _passwordField.text isEqualToString:@""] ||
         [ _passwordagainField.text isEqualToString:@""]
-        //|| ![self validateEmail:[_emailField text]]
+        
         )
         
     {
@@ -88,10 +88,7 @@
         
         [defaults synchronize];
         
-        /*NSString *passw=[[NSString alloc] initWithString:_passwordField.text];
-        unsigned char result[64];
-        CC_SHA256([passw UTF8String], [passw lengthOfBytesUsingEncoding:NSASCIIStringEncoding],result);
-        NSLog(@"%s", result);*/
+    
         
         [self performSegueWithIdentifier:@"activate" sender:self];
         
