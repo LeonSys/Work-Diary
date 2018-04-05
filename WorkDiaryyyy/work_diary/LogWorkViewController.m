@@ -7,6 +7,7 @@
 //
 
 #import "LogWorkViewController.h"
+#import "DescriptionViewController.h"
 
 @interface LogWorkViewController (){
     NSArray *tasks;
@@ -14,8 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *workhourField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datepickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) NSString *selectedRow;
+ @property (weak, nonatomic) NSMutableArray *workedhours;
 @end
-
+ NSMutableArray *hours;
 @implementation LogWorkViewController
 
 
@@ -49,6 +52,13 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+   
+    _selectedRow = [tasks objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+    NSLog(@"%@", _selectedRow);
+}
+
+
 -(NSInteger)numberOfComponentsInPickerView: (UIPickerView *)pickerView {
     return 1;
 }
@@ -60,8 +70,9 @@
  
  -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
  {
- return tasks[row];
+     return tasks[row];
  }
+
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     
@@ -88,31 +99,45 @@
     }
     else { [self saveHour];
         
+    
     }
 
 }
 
 - (void) saveHour {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray * hoursFromMemory = [defaults objectForKey:@"workhour"];
-    NSMutableArray *hours;
     
-    if (!hoursFromMemory) {
-        hours= [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *workedhours;
+    NSArray * workedhoursFromMemory = [defaults objectForKey:@"workedhours"];
+    
+    
+    if (!workedhoursFromMemory) {
+        workedhours = [[NSMutableArray alloc] initWithArray:workedhoursFromMemory];
     }
     else {
-        hours= [[NSMutableArray alloc] initWithArray:hoursFromMemory];
+        workedhours = [[NSMutableArray alloc] initWithArray:workedhoursFromMemory];
     }
-    [hours addObject:self.workhourField.text];
     
-    [defaults setObject:hours forKey:@"workhour"];
+  
+   
     
+    
+    /*[workedhours addObject:_workhourField.text];
+    [defaults setObject:workedhours forKey:@"workedhours"];
+
     [defaults synchronize];
     
-    UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You have added work hours to your task, go back to home." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView *succes = [[UIAlertView alloc] initWithTitle:@"Nice" message:@"You loged your work" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [succes show];*/
     
-    [success show];
+    NSLog(@"dsa %@",[defaults objectForKey:@"workedhours"]);
+    NSLog(@".... %@",[defaults objectForKey:@"taskname"]);
+    
+    
+   
+    
 
     
 }

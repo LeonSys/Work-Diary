@@ -7,6 +7,8 @@
 //
 
 #import "ActivationViewController.h"
+#import "AppDelegate.h"
+#import "CoreData/CoreData.h"
 
 @interface ActivationViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstnameField;
@@ -80,15 +82,17 @@
 }
 
 - (void) registerNewUser{
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        [defaults setObject:_emailField.text forKey:@"email"];
-        [defaults setObject:_passwordField.text forKey:@"password"];
-        [defaults setBool:YES forKey:@"registered"];
-        
-        [defaults synchronize];
-        
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    NSManagedObjectContext *context = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).persistentContainer.viewContext;
+    
+    NSManagedObject *newActivation = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
+    
+        [newActivation setValue:self.emailField.text forKey:@"email"];
+        [newActivation setValue:self.passwordField.text forKey:@"password"];
+        [defaults setBool:YES forKey:@"registered"];
+    
+    NSLog(@"Data saved to coreData");
         
         [self performSegueWithIdentifier:@"activate" sender:self];
         

@@ -8,6 +8,7 @@
 
 #import "DescriptionViewController.h"
 #import "HistoryViewController.h"
+#import "LoginViewController.h"
 @interface DescriptionViewController ()
 
 @end
@@ -18,11 +19,16 @@
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSMutableString *seged = [defaults objectForKey:@"taskname"];
+    _titleLabel.text = [defaults objectForKey:@"cellTitle"];
     
-   // _estimatedHours.text = @"estimated time: %@",_seged;
+  
+    _estimatedHours.text = [NSString stringWithFormat:@"Estimated Hours: %@", [defaults objectForKey:@"cellNumber"]];
     
-    NSLog(@"%@",seged);
+    
+    _cellNumber = [defaults objectForKey:@"cellNumber"];
+
+    NSLog(@"asd %@",[defaults objectForKey:@"workedhours"]);
+    
     
     
 }
@@ -31,6 +37,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
  
+    
+}
+
+- (IBAction)saveButton:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject: _descriptionLongText.text forKey:@"Desclongtext"];
+    
+    UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You have saved your task details" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    
+    [success show];
+    
+   [self performSegueWithIdentifier:@"descSave" sender:self];
+    NSLog(@"Valamit %@",[defaults objectForKey:@"descSave"]);
+
 }
 
 

@@ -142,7 +142,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="emailField" destination="Qc9-R8-BAV" id="Yg4-mh-Piz"/>
+                        <outlet property="emailField" destination="Qc9-R8-BAV" id="dWo-U3-VFq"/>
                         <outlet property="firstnameField" destination="LW0-HN-zte" id="3OZ-K6-x2g"/>
                         <outlet property="lastnameField" destination="l6y-f2-6Wb" id="PtT-iQ-hNg"/>
                         <outlet property="passwordField" destination="EQF-pa-9FK" id="hx3-Ms-EVx"/>
@@ -354,21 +354,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NuZ-9r-1aI">
-                                <rect key="frame" x="29" y="203" width="240" height="189"/>
+                                <rect key="frame" x="29" y="203" width="240" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estimated hours:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irS-oX-mXv">
-                                <rect key="frame" x="29" y="400" width="217" height="32"/>
+                                <rect key="frame" x="29" y="400" width="275" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hours left:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fj-7e-y9I">
-                                <rect key="frame" x="29" y="440" width="140" height="21"/>
+                                <rect key="frame" x="29" y="440" width="275" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -381,13 +381,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZD-PU-Zff">
+                                <rect key="frame" x="103" y="469" width="89" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="odu-2v-P0k" eventType="touchUpInside" id="ZiL-i5-qos"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="TitleLabel" destination="Hw5-b9-9m9" id="dBO-Bb-xpd"/>
+                        <outlet property="descriptionLongText" destination="NuZ-9r-1aI" id="fot-pY-SZG"/>
                         <outlet property="estimatedHours" destination="irS-oX-mXv" id="kGd-Kc-KDN"/>
+                        <outlet property="hoursWorked" destination="3fj-7e-y9I" id="vlW-EO-ms9"/>
                         <outlet property="titleLabel" destination="Hw5-b9-9m9" id="mzo-Oz-DXb"/>
+                        <segue destination="dEl-TZ-D5E" kind="show" identifier="descSave" id="x1U-h7-tnj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bQ-gb-MTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -410,7 +422,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBt-ln-y8A">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Task List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBt-ln-y8A">
                                 <rect key="frame" x="16" y="77" width="288" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="47"/>
@@ -498,7 +510,7 @@
                                 <rect key="frame" x="85" y="269" width="151" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="History"/>
+                                <state key="normal" title="Task list"/>
                                 <connections>
                                     <action selector="history:" destination="KNY-8V-ml6" eventType="touchUpInside" id="8iL-LO-ogN"/>
                                 </connections>
@@ -634,6 +646,7 @@
         <image name="Smooth Dark Background" width="1920" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="x1U-h7-tnj"/>
         <segue reference="SpE-EP-hD7"/>
         <segue reference="4A7-P9-fSf"/>
     </inferredMetricsTieBreakers>

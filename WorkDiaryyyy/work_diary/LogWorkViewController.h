@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LogWorkViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDelegate>
-
+@property (strong, nonatomic) NSArray *workhour;
 @end

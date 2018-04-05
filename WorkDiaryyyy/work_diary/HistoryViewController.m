@@ -22,33 +22,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    self.tasks = [defaults objectForKey:@"taskname"];
+    
+    self.tasks= [defaults objectForKey:@"taskname"];
     self.estimatedhour = [defaults objectForKey:@"estimatedhour"];
     
     [self.table beginUpdates];
     
     
     NSArray *arr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_tasks.count-1 inSection:0]];
+    
     [self.table insertRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationAutomatic];
+    
     [self.table endUpdates];
-    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (_tasks.count > 0) {
+    if (_tasks> 0) {
     return [self.tasks count];
     }
     return 0;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
@@ -64,14 +67,6 @@
 }
 
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row ==-1) {
-        return nil;
-    } else {
-        return indexPath;
-    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -84,10 +79,16 @@
     descriptionController.cellTitle = selectedCell.textLabel.text;
    [defaults setObject:descriptionController.cellTitle forKey:@"cellTitle"];
   
+    DescriptionViewController *descriptionControllerNumber = [[DescriptionViewController alloc] init];
+    descriptionControllerNumber.cellNumber = self.estimatedhour[indexPath.row];
+    [defaults setObject:descriptionControllerNumber.cellNumber forKey:@"cellNumber"];
     
-   
-            [self performSegueWithIdentifier:@"Description" sender:self];
-    }
+    
+   // [tasksToDelete addObject:tasksData[indexPath.row]];
+    
+    [self performSegueWithIdentifier:@"Description" sender:self];
+    
+}
 
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -95,24 +96,29 @@
     [tasksToDelete removeObject:tasksData[indexPath.row]];
 }
 
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40;
+-(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 3;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
     }
 }
+ 
 
-
-- (IBAction)buttonDelete:(id)sender {
-   
-    
+- (IBAction)buttonDelete:(UIButton*)sender {
+    [tasksData removeAllObjects];
+    [self.table reloadData];
     
 }
+    
+    
+
+
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "CoreData/CoreData.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -25,10 +27,20 @@
 }
 
 - (IBAction)login:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if ([_emailField.text isEqualToString:[defaults objectForKey:@"email"]]
-        && [_passwordField.text isEqualToString:[defaults objectForKey:@"password"]])
+    NSManagedObjectContext *moc = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).persistentContainer.viewContext;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    
+    if (!results || results.count == 0) {
+        NSLog(@"Not succesful Fetch");
+        return;
+    }
+     NSManagedObject *user = [results objectAtIndex:0];
+    
+    if ([_emailField.text isEqualToString: [user valueForKey:@"email"]]
+        && [_passwordField.text isEqualToString: [user valueForKey:@"password"]])
     {
         [self performSegueWithIdentifier:@"login" sender:self];
     }

@@ -50,16 +50,25 @@
     
 - (void) saveNewTask {
     
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSArray * tasksFromMemory = [defaults objectForKey:@"taskname"];
+    NSArray * tasksFromMemory = [defaults objectForKey:@"taskname"];
     NSMutableArray *tasks;
-        NSMutableArray * estimatedhour = [defaults objectForKey:@"estimatedhour"];
+    NSArray * estimatedhourFromMemory = [defaults objectForKey:@"estimatedhour"];
+    NSMutableArray *estimatedhour;
     
     if (!tasksFromMemory) {
-        tasks= [[NSMutableArray alloc] init];
+        tasks= [[NSMutableArray alloc] initWithArray:tasksFromMemory];
     }
     else {
         tasks= [[NSMutableArray alloc] initWithArray:tasksFromMemory];
+    }
+   
+    if (!estimatedhourFromMemory) {
+        estimatedhour = [[NSMutableArray alloc] initWithArray:estimatedhourFromMemory];
+    }
+    else {
+        estimatedhour = [[NSMutableArray alloc] initWithArray:estimatedhourFromMemory];
     }
     
         [tasks addObject:self.tasknameField.text];
@@ -67,6 +76,8 @@
     
         [defaults setObject:tasks forKey:@"taskname"];
         [defaults setObject:estimatedhour forKey:@"estimatedhour"];
+    
+    //[defaults setObject:_estimatedhourField.text forKey:@"estimatedhour"];
         
         [defaults synchronize];
     

@@ -11,7 +11,6 @@
 		0632A3B32019E6050068218B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632A3B22019E6050068218B /* AppDelegate.m */; };
 		0632A3B62019E6050068218B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632A3B52019E6050068218B /* ViewController.m */; };
 		0632A3B92019E6050068218B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0632A3B72019E6050068218B /* Main.storyboard */; settings = {ASSET_TAGS = ("Log work", ); }; };
-		0632A3BC2019E6050068218B /* work_diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0632A3BA2019E6050068218B /* work_diary.xcdatamodeld */; };
 		0632A3C12019E6050068218B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0632A3BF2019E6050068218B /* LaunchScreen.storyboard */; };
 		0632A3CC2019E6050068218B /* work_diaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632A3CB2019E6050068218B /* work_diaryTests.m */; };
 		0632A3D72019E6050068218B /* work_diaryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632A3D62019E6050068218B /* work_diaryUITests.m */; };
@@ -23,6 +22,7 @@
 		0632A439201B4D5D0068218B /* Assets 12-43-56-910.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0632A438201B4D5D0068218B /* Assets 12-43-56-910.xcassets */; };
 		0632A43C2020754E0068218B /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632A43B2020754E0068218B /* HistoryViewController.m */; };
 		2E3F6B15203F174F00AD348F /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3F6B14203F174F00AD348F /* DescriptionViewController.m */; };
+		2EF27B4F2061530900E594A1 /* dataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EF27B4D2061530900E594A1 /* dataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 		0632A3B42019E6050068218B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0632A3B52019E6050068218B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0632A3B82019E6050068218B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0632A3BB2019E6050068218B /* work_diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = work_diary.xcdatamodel; sourceTree = "<group>"; };
 		0632A3C02019E6050068218B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0632A3C22019E6050068218B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0632A3C72019E6050068218B /* work_diaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = work_diaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +73,7 @@
 		0632A43B2020754E0068218B /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		2E3F6B13203F174F00AD348F /* DescriptionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionViewController.h; sourceTree = "<group>"; };
 		2E3F6B14203F174F00AD348F /* DescriptionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DescriptionViewController.m; sourceTree = "<group>"; };
+		2EF27B4E2061530900E594A1 /* dataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +130,7 @@
 				0632A3B52019E6050068218B /* ViewController.m */,
 				0632A3E42019FE2E0068218B /* ActivationViewController.h */,
 				0632A3E52019FE2E0068218B /* ActivationViewController.m */,
+				2EF27B4D2061530900E594A1 /* dataModel.xcdatamodeld */,
 				2E3F6B13203F174F00AD348F /* DescriptionViewController.h */,
 				2E3F6B14203F174F00AD348F /* DescriptionViewController.m */,
 				0632A3E72019FE4A0068218B /* LoginViewController.h */,
@@ -146,7 +147,6 @@
 				0632A438201B4D5D0068218B /* Assets 12-43-56-910.xcassets */,
 				0632A3BF2019E6050068218B /* LaunchScreen.storyboard */,
 				0632A3C22019E6050068218B /* Info.plist */,
-				0632A3BA2019E6050068218B /* work_diary.xcdatamodeld */,
 				0632A3AE2019E6050068218B /* Supporting Files */,
 			);
 			path = work_diary;
@@ -316,13 +316,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0632A3E62019FE2E0068218B /* ActivationViewController.m in Sources */,
+				2EF27B4F2061530900E594A1 /* dataModel.xcdatamodeld in Sources */,
 				0632A3B62019E6050068218B /* ViewController.m in Sources */,
 				0632A3E92019FE4A0068218B /* LoginViewController.m in Sources */,
 				0632A43C2020754E0068218B /* HistoryViewController.m in Sources */,
 				0632A3F2201A221A0068218B /* LogWorkViewController.m in Sources */,
 				2E3F6B15203F174F00AD348F /* DescriptionViewController.m in Sources */,
 				0632A3B32019E6050068218B /* AppDelegate.m in Sources */,
-				0632A3BC2019E6050068218B /* work_diary.xcdatamodeld in Sources */,
 				0632A3EC2019FE660068218B /* HomeViewController.m in Sources */,
 				0632A3EF201A20980068218B /* NewTaskViewController.m in Sources */,
 				0632A3B02019E6050068218B /* main.m in Sources */,
@@ -580,13 +580,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0632A3BA2019E6050068218B /* work_diary.xcdatamodeld */ = {
+		2EF27B4D2061530900E594A1 /* dataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0632A3BB2019E6050068218B /* work_diary.xcdatamodel */,
+				2EF27B4E2061530900E594A1 /* dataModel.xcdatamodel */,
 			);
-			currentVersion = 0632A3BB2019E6050068218B /* work_diary.xcdatamodel */;
-			path = work_diary.xcdatamodeld;
+			currentVersion = 2EF27B4E2061530900E594A1 /* dataModel.xcdatamodel */;
+			path = dataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

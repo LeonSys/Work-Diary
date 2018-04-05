@@ -12,6 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) NSString *cellTitle;
+@property (weak, nonatomic) NSMutableString *cellNumber;
+@property (weak, nonatomic) NSString *workedHours;
 @property (weak, nonatomic) IBOutlet UILabel *estimatedHours;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionLongText;
+@property (weak, nonatomic) IBOutlet UILabel *hoursWorked;
 
 @end
