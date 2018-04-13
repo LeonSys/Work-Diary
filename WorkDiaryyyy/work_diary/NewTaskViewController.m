@@ -6,7 +6,8 @@
 //  Copyright © 2018. Kozak, Luca. All rights reserved.
 
 #import "NewTaskViewController.h"
-
+#import "AppDelegate.h"
+#import "CoreData/CoreData.h"
 @interface NewTaskViewController () 
 
 @property (weak, nonatomic) IBOutlet UITextField *tasknameField;
@@ -49,12 +50,16 @@
 }
     
 - (void) saveNewTask {
-    
-    
+    NSManagedObjectContext *moc = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).persistentContainer.viewContext;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tasks"];
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    NSManagedObject *task = [results objectAtIndex:0];
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray * tasksFromMemory = [defaults objectForKey:@"taskname"];
+    NSArray * tasksFromMemory = [task valueForKey:@"task"];
     NSMutableArray *tasks;
-    NSArray * estimatedhourFromMemory = [defaults objectForKey:@"estimatedhour"];
+    NSArray * estimatedhourFromMemory = [task valueForKey:@"estimatedhour"];
     NSMutableArray *estimatedhour;
     
     if (!tasksFromMemory) {
@@ -74,8 +79,16 @@
         [tasks addObject:self.tasknameField.text];
         [estimatedhour addObject:self.estimatedhourField.text];
     
-        [defaults setObject:tasks forKey:@"taskname"];
-        [defaults setObject:estimatedhour forKey:@"estimatedhour"];
+    NSManagedObjectContext *context = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).persistentContainer.viewContext;
+    
+    NSManagedObject *newtask = [NSEntityDescription insertNewObjectForEntityForName:@"Tasks" inManagedObjectContext:context];
+    
+    
+    [newtask setValue:tasks forKey:@"task"];
+    [newtask setValue:estimatedhour forKey:@"estimatedhour"];
+    
+    /* [defaults setObject:tasks forKey:@"taskname"];
+        [defaults setObject:estimatedhour forKey:@"estimatedhour"];*/
     
     //[defaults setObject:_estimatedhourField.text forKey:@"estimatedhour"];
         

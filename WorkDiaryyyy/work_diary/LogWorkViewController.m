@@ -8,7 +8,8 @@
 
 #import "LogWorkViewController.h"
 #import "DescriptionViewController.h"
-
+#import "AppDelegate.h"
+#import "CoreData/CoreData.h"
 @interface LogWorkViewController (){
     NSArray *tasks;
 }
@@ -31,9 +32,16 @@
 
 
 - (void)viewDidLoad {
+    
+    NSManagedObjectContext *moc = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).persistentContainer.viewContext;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tasks"];
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    NSManagedObject *task = [results objectAtIndex:0];
      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     [super viewDidLoad];
-    tasks = [defaults objectForKey:@"taskname"];
+    tasks = [task valueForKey:@"Task"];
       self.pickerView.dataSource = self;
       self.pickerView.delegate = self;
     
@@ -88,7 +96,7 @@
 }
 
 
-- (IBAction)savelogwork:(id)sender {
+/*- (IBAction)savelogwork:(id)sender {
     
     if ([ _workhourField.text isEqualToString:@""] ||
         ![self validateHour:_workhourField.text])
@@ -97,14 +105,14 @@
         UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"OOops!" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [error show];
     }
-    else { [self saveHour];
+    //else { [self saveHour];
         
     
     }
 
-}
+//}
 
-- (void) saveHour {
+/*- (void) saveHour {
     
     
     
@@ -119,7 +127,7 @@
     else {
         workedhours = [[NSMutableArray alloc] initWithArray:workedhoursFromMemory];
     }
-    
+ */
   
    
     
@@ -132,14 +140,13 @@
     UIAlertView *succes = [[UIAlertView alloc] initWithTitle:@"Nice" message:@"You loged your work" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [succes show];*/
     
-    NSLog(@"dsa %@",[defaults objectForKey:@"workedhours"]);
-    NSLog(@".... %@",[defaults objectForKey:@"taskname"]);
+  //// NSLog(@".... %@",[defaults objectForKey:@"taskname"]);
     
     
    
     
 
     
-}
+//}
 
 @end

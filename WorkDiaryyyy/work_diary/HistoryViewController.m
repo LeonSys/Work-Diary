@@ -8,7 +8,8 @@
 
 #import "HistoryViewController.h"
 #import "DescriptionViewController.h"
-
+#import "AppDelegate.h"
+#import "CoreData/CoreData.h"
 @interface HistoryViewController () {
     NSMutableArray *tasksToDelete;
     NSMutableArray *tasksData;
@@ -24,11 +25,16 @@
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+    NSManagedObjectContext *moc = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).persistentContainer.viewContext;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tasks"];
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    NSManagedObject *task = [results objectAtIndex:0];
     
     
     
-    self.tasks= [defaults objectForKey:@"taskname"];
-    self.estimatedhour = [defaults objectForKey:@"estimatedhour"];
+    self.tasks= [task valueForKey:@"taskname"];
+    self.estimatedhour = [task valueForKey:@"estimatedhour"];
     
     [self.table beginUpdates];
     
